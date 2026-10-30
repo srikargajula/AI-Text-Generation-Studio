@@ -29,6 +29,7 @@ DEFAULT_MODEL_PATH = MODELS_DIR / "lstm_text_gen.keras"
 DEFAULT_TOKENIZER_PATH = MODELS_DIR / "tokenizer.json"
 DEFAULT_METADATA_PATH = MODELS_DIR / "metadata.json"
 SAMPLE_DATASET_PATH = DATASET_DIR / "sample.txt"
+SHERLOCK_DATASET_PATH = DATASET_DIR / "sherlock.txt"
 
 # Ensure required directories exist
 MODELS_DIR.mkdir(parents=True, exist_ok=True)
@@ -61,7 +62,7 @@ EXAMPLE_PROMPTS = [
     "The Time Traveller was expounding",
     "There are really four dimensions",
     "Can a cube that does not last",
-    "Scientific people know very well that",
-    "I do not mean to ask you to accept",
-    "A line I trace with my finger shows"
+    "To Sherlock Holmes she is always",
+    "I see it I deduce it How do I know",
+    "It is simplicity itself said he",
 ]

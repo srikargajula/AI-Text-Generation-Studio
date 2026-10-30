@@ -469,15 +469,33 @@ elif selected_nav == "Dataset Management":
                     st.error(f"Failed to read file: {e}")
 
     with tab_sample:
-        st.write("A clean public-domain excerpt from **The Time Machine** by H.G. Wells is provided by default.")
-        if st.button("Reload Bundled Time Machine Sample"):
-            if config.SAMPLE_DATASET_PATH.exists():
-                with open(config.SAMPLE_DATASET_PATH, "r", encoding="utf-8") as f:
-                    st.session_state.dataset_text = f.read()
-                    st.session_state.dataset_name = "The Time Machine (HG Wells Excerpt)"
-                st.success("Loaded bundled sample dataset.")
-            else:
-                st.error("Sample dataset file not found on disk.")
+        st.write("Explore bundled classic public-domain literary corpora for immediate training and benchmarking:")
+        c_ds1, c_ds2 = st.columns(2)
+        with c_ds1:
+            st.markdown("##### ⏳ The Time Machine (H.G. Wells)")
+            st.caption("Science fiction corpus focusing on time, dimensions, geometry, and philosophical speculation.")
+            if st.button("Load The Time Machine Sample", use_container_width=True):
+                if config.SAMPLE_DATASET_PATH.exists():
+                    with open(config.SAMPLE_DATASET_PATH, "r", encoding="utf-8") as f:
+                        st.session_state.dataset_text = f.read()
+                        st.session_state.dataset_name = "The Time Machine (HG Wells Excerpt)"
+                    st.success("Loaded 'The Time Machine' sample dataset.")
+                    st.rerun()
+                else:
+                    st.error("Sample dataset file not found on disk.")
+
+        with c_ds2:
+            st.markdown("##### 🔍 Sherlock Holmes (Arthur Conan Doyle)")
+            st.caption("Victorian detective mystery corpus emphasizing forensic deduction, dialogue, and keen observation.")
+            if st.button("Load Sherlock Holmes Sample", use_container_width=True):
+                if config.SHERLOCK_DATASET_PATH.exists():
+                    with open(config.SHERLOCK_DATASET_PATH, "r", encoding="utf-8") as f:
+                        st.session_state.dataset_text = f.read()
+                        st.session_state.dataset_name = "Sherlock Holmes (Conan Doyle Excerpt)"
+                    st.success("Loaded 'Sherlock Holmes' sample dataset.")
+                    st.rerun()
+                else:
+                    st.error("Sherlock dataset file not found on disk.")
 
     st.markdown("---")
 
